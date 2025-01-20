@@ -11,6 +11,12 @@ public class List {
         if (item.startsWith("todo ")) {
             String description = item.substring(5);
             tasks[currentIndex] = new ToDo(description);
+        } else if (item.startsWith("deadline ")) {
+            String text = item.substring(9);
+            String[] parts = text.split("/by");
+            String description = parts[0];
+            String date = parts[1].trim();
+            tasks[currentIndex] = new Deadline(description, date);
         } else {
             tasks[currentIndex] = new Task(item);
         }
