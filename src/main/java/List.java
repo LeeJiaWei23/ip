@@ -17,8 +17,13 @@ public class List {
             String description = parts[0];
             String date = parts[1].trim();
             tasks[currentIndex] = new Deadline(description, date);
-        } else {
-            tasks[currentIndex] = new Task(item);
+        } else if (item.startsWith("event ")) {
+           String text = item.substring(6);
+           String[] parts = text.split(" /from | /to ");
+           String description = parts[0];
+           String start = parts[1];
+           String end = parts[2];
+           tasks[currentIndex] = new Event(description, start, end);
         }
         currentIndex++;
     }
