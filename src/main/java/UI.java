@@ -23,4 +23,12 @@ public class UI {
         return encloseText("OK. This task is mark as not done:\n"
                 + "       "  + input);
     }
+
+    public static String addTaskString(String input, int taskNum) {
+        String template = "Got it. This task will be added to the list:\n"
+                + "       %s\n"
+                + "     Now you have %d %s in the list.";
+        String taskOrTasks = (taskNum == 1 ? "task" : "tasks");
+        return encloseText(String.format(template, input, taskNum, taskOrTasks));
+    }
 }

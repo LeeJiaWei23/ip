@@ -19,8 +19,8 @@ public class Clippy {
                 System.out.print(UI.unmarkTaskString(list.getTaskDescription(taskIndex)));
             } else {
                 list.addItem(input);
-                String res = "added: " +input;
-                System.out.print(UI.encloseText(res));
+                int taskNum = list.getTaskNum();
+                System.out.print(UI.addTaskString(list.getTaskDescription(taskNum), taskNum));
             }
             input = reader.nextLine();
         }

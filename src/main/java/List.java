@@ -8,7 +8,12 @@ public class List {
     }
 
     public void addItem(String item) {
-        tasks[currentIndex] = new Task(item);
+        if (item.startsWith("todo ")) {
+            String description = item.substring(5);
+            tasks[currentIndex] = new ToDo(description);
+        } else {
+            tasks[currentIndex] = new Task(item);
+        }
         currentIndex++;
     }
 
@@ -32,5 +37,9 @@ public class List {
 
     public String getTaskDescription(int index) {
         return tasks[index - 1].toString();
+    }
+
+    public int getTaskNum() {
+        return currentIndex;
     }
 }
