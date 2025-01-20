@@ -15,7 +15,9 @@ public class List {
     public String displayList() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < currentIndex; i++) {
-            result.append(i + 1).append(". ").append(lists[i]).append("\n");
+            result.append("     ")
+                  .append(i + 1).append(". ")
+                  .append(lists[i]).append("\n");
         }
         return result.toString();
     }

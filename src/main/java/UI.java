@@ -5,7 +5,7 @@ public class UI {
     private static final String GOODBYE = "Goodbye. Look forward to our next chat!";
 
     public static String encloseText(String input) {
-        return HORIZONTAL_LINE + "     " + input + "\n" + HORIZONTAL_LINE;
+        return HORIZONTAL_LINE + "     " + input.trim() + "\n" + HORIZONTAL_LINE;
     }
 
     public static String getGreeting() {
@@ -14,5 +14,9 @@ public class UI {
 
     public static String getGoodbye() {
         return encloseText(GOODBYE);
+    }
+
+    public static String addIndentation(String text) {
+        return "     " + text;
     }
 }
