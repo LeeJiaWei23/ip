@@ -1,7 +1,64 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+    ____________________________________________________________
+     Hey! I'm Clippy. Your personal assistant chatbot
+     How can I help?
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. This task will be added to the list:
+       [T][ ] borrow book
+     Now you have 1 task in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. This task will be added to the list:
+       [D][ ] return book  (by: Sunday)
+     Now you have 2 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. This task will be added to the list:
+       [D][ ] return book  (by: no idea)
+     Now you have 3 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. This task will be added to the list:
+       [E][ ] project meeting (from: Mon 2pm to: 4pm)
+     Now you have 4 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. This task will be added to the list:
+       [E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+     Now you have 5 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Current Tasks in Your List:
+     1.[T][ ] borrow book
+     2.[D][ ] return book  (by: Sunday)
+     3.[D][ ] return book  (by: no idea)
+     4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
+     5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+    ____________________________________________________________
+    ____________________________________________________________
+     Well Done! This task is mark as done:
+       [D][X] return book  (by: Sunday)
+    ____________________________________________________________
+    ____________________________________________________________
+     Current Tasks in Your List:
+     1.[T][ ] borrow book
+     2.[D][X] return book  (by: Sunday)
+     3.[D][ ] return book  (by: no idea)
+     4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
+     5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+    ____________________________________________________________
+    ____________________________________________________________
+     OK. This task is mark as not done:
+       [D][ ] return book  (by: Sunday)
+    ____________________________________________________________
+    ____________________________________________________________
+     Current Tasks in Your List:
+     1.[T][ ] borrow book
+     2.[D][ ] return book  (by: Sunday)
+     3.[D][ ] return book  (by: no idea)
+     4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
+     5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+    ____________________________________________________________
+    ____________________________________________________________
+     Goodbye. Look forward to our next chat!
+    ____________________________________________________________

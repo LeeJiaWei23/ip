@@ -4,10 +4,9 @@ public class Clippy {
     public static void main(String[] args) {
         System.out.print(UI.getGreeting());
         Scanner reader = new Scanner(System.in);
-        String input = reader.nextLine();
         List list = new List();
         while (reader.hasNextLine()) {
-            input = reader.nextLine();
+            String input = reader.nextLine();
             if (input.equals("bye")) {
                 break;
             }
