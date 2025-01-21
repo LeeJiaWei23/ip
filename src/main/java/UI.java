@@ -6,7 +6,7 @@ public class UI {
     }
 
     public static String getGreeting() {
-        return encloseText("Hey! I'm Clippy. Your personal assistant chatbot ┌|∵|┘\n" +
+        return encloseText("Hey! I'm Clippy. Your personal assistant chatbot\n" +
                 "     " + "How can I help?");
     }
 

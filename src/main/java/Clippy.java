@@ -6,7 +6,11 @@ public class Clippy {
         Scanner reader = new Scanner(System.in);
         String input = reader.nextLine();
         List list = new List();
-        while (!input.equals("bye")) {
+        while (reader.hasNextLine()) {
+            input = reader.nextLine();
+            if (input.equals("bye")) {
+                break;
+            }
             if (input.equals("list")) {
                 System.out.print(UI.encloseText(list.displayList()));
             } else if (input.startsWith("mark ")) {
@@ -22,8 +26,8 @@ public class Clippy {
                 int taskNum = list.getTaskNum();
                 System.out.print(UI.addTaskString(list.getTaskDescription(taskNum), taskNum));
             }
-            input = reader.nextLine();
         }
         System.out.print(UI.getGoodbye());
+        reader.close();
     }
 }
