@@ -9,12 +9,12 @@
     ____________________________________________________________
     ____________________________________________________________
      Got it. This task will be added to the list:
-       [D][ ] return book  (by: Sunday)
+       [D][ ] return book (by: Sunday)
      Now you have 2 tasks in the list.
     ____________________________________________________________
     ____________________________________________________________
      Got it. This task will be added to the list:
-       [D][ ] return book  (by: no idea)
+       [D][ ] return book (by: no idea)
      Now you have 3 tasks in the list.
     ____________________________________________________________
     ____________________________________________________________
@@ -30,34 +30,43 @@
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][ ] return book  (by: Sunday)
-     3.[D][ ] return book  (by: no idea)
+     2.[D][ ] return book (by: Sunday)
+     3.[D][ ] return book (by: no idea)
      4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
      5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
     ____________________________________________________________
     ____________________________________________________________
      Well Done! This task is mark as done:
-       [D][X] return book  (by: Sunday)
+       [D][X] return book (by: Sunday)
     ____________________________________________________________
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][X] return book  (by: Sunday)
-     3.[D][ ] return book  (by: no idea)
+     2.[D][X] return book (by: Sunday)
+     3.[D][ ] return book (by: no idea)
      4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
      5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
     ____________________________________________________________
     ____________________________________________________________
      OK. This task is mark as not done:
-       [D][ ] return book  (by: Sunday)
+       [D][ ] return book (by: Sunday)
     ____________________________________________________________
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][ ] return book  (by: Sunday)
-     3.[D][ ] return book  (by: no idea)
+     2.[D][ ] return book (by: Sunday)
+     3.[D][ ] return book (by: no idea)
      4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
      5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+    ____________________________________________________________
+    ____________________________________________________________
+     Oh no. Please add a description for ToDo task :(
+    ____________________________________________________________
+    ____________________________________________________________
+     Oh no. I do not understand this command :(
+    ____________________________________________________________
+    ____________________________________________________________
+     Oh no. Task 10 does not exist :(
     ____________________________________________________________
     ____________________________________________________________
      Goodbye. Look forward to our next chat!

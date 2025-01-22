@@ -7,31 +7,54 @@ public class List {
         tasks = new ArrayList<>();
     }
 
-    public void addItem(String item) {
-        if (item.startsWith("todo ")) {
-            String description = item.substring(5);
+    public void addItem(String item) throws ClippyException {
+        if (item.startsWith("todo")) {
+            String description = item.substring(4).trim();
+            if (description.isEmpty()) {
+                ClippyException.throwEmptyDescription("ToDo");
+            }
             tasks.add(new ToDo(description));
-        } else if (item.startsWith("deadline ")) {
-            String text = item.substring(9);
+        } else if (item.startsWith("deadline")) {
+            String text = item.substring(8);
             String[] parts = text.split("/by");
-            String description = parts[0];
+            String description = parts[0].trim();
+            if (description.isEmpty()){
+                ClippyException.throwEmptyDescription("Deadline");
+            }
             String date = parts[1].trim();
+            if (date.isEmpty()) {
+                ClippyException.throwEmptyTime();
+            }
             tasks.add(new Deadline(description, date));
-        } else if (item.startsWith("event ")) {
-           String text = item.substring(6);
+        } else if (item.startsWith("event")) {
+           String text = item.substring(5);
            String[] parts = text.split(" /from | /to ");
-           String description = parts[0];
-           String start = parts[1];
-           String end = parts[2];
+           String description = parts[0].trim();
+           if (description.isEmpty()) {
+               ClippyException.throwEmptyDescription("Event");
+           }
+           String start = parts[1].trim();
+           String end = parts[2].trim();
+           if (start.isEmpty() || end.isEmpty()) {
+               ClippyException.throwEmptyTime();
+           }
            tasks.add(new Event(description, start, end));
+        } else {
+            ClippyException.throwUnknownCommand();
         }
     }
 
-    public void markTask(int index) {
+    public void markTask(int index) throws ClippyException {
+        if (index < 1 || index > tasks.size()) {
+            ClippyException.throwInvalidIndex(index);
+        }
         tasks.get(index - 1).markAsDone();
     }
 
-    public void unmarkTask(int index) {
+    public void unmarkTask(int index) throws ClippyException {
+        if (index < 1 || index > tasks.size()) {
+            ClippyException.throwInvalidIndex(index);
+        }
         tasks.get(index - 1).markAsUndone();
     }
 
