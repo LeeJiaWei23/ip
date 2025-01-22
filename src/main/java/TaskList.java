@@ -7,40 +7,42 @@ public class TaskList {
         tasks = new ArrayList<>();
     }
 
-    public String addItem(String item) throws ClippyException {
-        if (item.startsWith("todo")) {
-            String description = item.substring(4).trim();
-            if (description.isEmpty()) {
-                ClippyException.throwEmptyDescription("ToDo");
+    public String addItem(CommandType command, String item) throws ClippyException {
+        switch (command) {
+            case TODO -> {
+                String description = item.substring(4).trim();
+                if (description.isEmpty()) {
+                    throw ClippyException.emptyDescription("ToDo");
+                }
+                tasks.add(new ToDo(description));
             }
-            tasks.add(new ToDo(description));
-        } else if (item.startsWith("deadline")) {
-            String text = item.substring(8);
-            String[] parts = text.split("/by");
-            String description = parts[0].trim();
-            if (description.isEmpty()){
-                ClippyException.throwEmptyDescription("Deadline");
+            case DEADLINE -> {
+                String text = item.substring(8);
+                String[] parts = text.split("/by");
+                String description = parts[0].trim();
+                if (description.isEmpty()) {
+                    throw ClippyException.emptyDescription("Deadline");
+                }
+                String date = parts[1].trim();
+                if (date.isEmpty()) {
+                    throw ClippyException.emptyTime();
+                }
+                tasks.add(new Deadline(description, date));
             }
-            String date = parts[1].trim();
-            if (date.isEmpty()) {
-                ClippyException.throwEmptyTime();
+            case EVENT -> {
+                String text = item.substring(5);
+                String[] parts = text.split(" /from | /to ");
+                String description = parts[0].trim();
+                if (description.isEmpty()) {
+                    throw ClippyException.emptyDescription("Event");
+                }
+                String start = parts[1].trim();
+                String end = parts[2].trim();
+                if (start.isEmpty() || end.isEmpty()) {
+                    throw ClippyException.emptyTime();
+                }
+                tasks.add(new Event(description, start, end));
             }
-            tasks.add(new Deadline(description, date));
-        } else if (item.startsWith("event")) {
-           String text = item.substring(5);
-           String[] parts = text.split(" /from | /to ");
-           String description = parts[0].trim();
-           if (description.isEmpty()) {
-               ClippyException.throwEmptyDescription("Event");
-           }
-           String start = parts[1].trim();
-           String end = parts[2].trim();
-           if (start.isEmpty() || end.isEmpty()) {
-               ClippyException.throwEmptyTime();
-           }
-           tasks.add(new Event(description, start, end));
-        } else {
-            ClippyException.throwUnknownCommand();
         }
         return tasks.get(tasks.size() - 1).toString();
     }
@@ -50,12 +52,11 @@ public class TaskList {
         try {
             index = Integer.parseInt(indexStr);
         } catch (NumberFormatException e) {
-            ClippyException.throwInvalidInteger(indexStr);
-            return -1;
+            throw ClippyException.invalidInteger(indexStr);
         }
 
         if (index < 1 || index > size) {
-            ClippyException.throwInvalidIndex(index);
+            throw ClippyException.invalidIndex(index);
         }
 
         return index;

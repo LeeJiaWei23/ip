@@ -1,20 +1,23 @@
 public class Parser {
     public static Command parse(String input) throws ClippyException {
-        if (input.equals("bye")) {
-            return new ByeCommand();
-        } else if (input.equals("list")) {
-            return new ListCommand();
-        } else if (input.startsWith("mark ")) {
-            String taskIndex = input.split(" ")[1];
-            return new MarkCommand(taskIndex);
-        } else if (input.startsWith("unmark ")) {
-            String taskIndex = input.split(" ")[1];
-            return new UnmarkCommand(taskIndex);
-        } else if (input.startsWith("delete ")) {
-            String taskIndex = input.split(" ")[1];
-            return new DeleteCommand(taskIndex);
-        } else {
-            return new AddCommand(input);
+        String[] words = input.split(" ");
+        String arguments = (words.length < 2 ? "" : words[1]);
+        CommandType commandType = getCommandType(words[0]);
+        return switch (commandType) {
+            case LIST -> new ListCommand();
+            case MARK -> new MarkCommand(arguments);
+            case UNMARK -> new UnmarkCommand(arguments);
+            case DELETE -> new DeleteCommand(arguments);
+            case TODO, DEADLINE, EVENT -> new AddCommand(commandType, input);
+            case BYE -> new ByeCommand();
+        };
+    }
+
+    private static CommandType getCommandType(String command) throws ClippyException {
+        try {
+            return CommandType.valueOf(command.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw ClippyException.unknownCommand();
         }
     }
 }
