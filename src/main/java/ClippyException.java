@@ -18,4 +18,8 @@ public class ClippyException extends Exception {
     public static void throwEmptyTime() throws ClippyException {
         throw new ClippyException("Oh no. Please add a time / date to the task :(");
     }
+
+    public static void throwInvalidInteger(String indexStr) throws ClippyException {
+        throw new ClippyException("Oh no. " + indexStr + " is not a valid integer :(");
+    }
 }

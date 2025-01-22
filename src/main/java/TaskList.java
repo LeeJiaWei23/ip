@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class List {
+public class TaskList {
     private final ArrayList<Task> tasks;
 
-    public List() {
+    public TaskList() {
         tasks = new ArrayList<>();
     }
 
-    public void addItem(String item) throws ClippyException {
+    public String addItem(String item) throws ClippyException {
         if (item.startsWith("todo")) {
             String description = item.substring(4).trim();
             if (description.isEmpty()) {
@@ -42,20 +42,42 @@ public class List {
         } else {
             ClippyException.throwUnknownCommand();
         }
+        return tasks.get(tasks.size() - 1).toString();
     }
 
-    public void markTask(int index) throws ClippyException {
-        if (index < 1 || index > tasks.size()) {
+    private int validateIndex(String indexStr, int size) throws ClippyException {
+        int index;
+        try {
+            index = Integer.parseInt(indexStr);
+        } catch (NumberFormatException e) {
+            ClippyException.throwInvalidInteger(indexStr);
+            return -1;
+        }
+
+        if (index < 1 || index > size) {
             ClippyException.throwInvalidIndex(index);
         }
+
+        return index;
+    }
+
+    public String deleteTask(String indexStr) throws ClippyException {
+        int index = validateIndex(indexStr, tasks.size());
+        String description = tasks.get(index - 1).toString();
+        tasks.remove(index - 1);
+        return description;
+    }
+
+    public String markTask(String indexStr) throws ClippyException {
+        int index = validateIndex(indexStr, tasks.size());
         tasks.get(index - 1).markAsDone();
+        return tasks.get(index - 1).toString();
     }
 
-    public void unmarkTask(int index) throws ClippyException {
-        if (index < 1 || index > tasks.size()) {
-            ClippyException.throwInvalidIndex(index);
-        }
+    public String unmarkTask(String indexStr) throws ClippyException {
+        int index = validateIndex(indexStr, tasks.size());
         tasks.get(index - 1).markAsUndone();
+        return tasks.get(index - 1).toString();
     }
 
     public String displayList() {
@@ -66,10 +88,6 @@ public class List {
                   .append(tasks.get(i).toString()).append("\n");
         }
         return result.toString();
-    }
-
-    public String getTaskDescription(int index) {
-        return tasks.get(index - 1).toString();
     }
 
     public int getTaskNum() {

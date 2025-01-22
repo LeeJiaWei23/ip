@@ -11,3 +11,7 @@ list
 todo
 test
 mark 10
+delete 3
+list
+delete foo
+mark Hoo

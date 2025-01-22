@@ -31,4 +31,12 @@ public class UI {
         String taskOrTasks = (taskNum == 1 ? "task" : "tasks");
         return encloseText(String.format(template, input, taskNum, taskOrTasks));
     }
+
+    public static String deleteTaskString(String input, int taskNum) {
+        String template = "Got it. This task will be removed from the list:\n"
+                + "       %s\n"
+                + "     Now you have %d %s in the list.";
+        String taskOrTasks = (taskNum == 1 ? "task" : "tasks");
+        return encloseText(String.format(template, input, taskNum, taskOrTasks));
+    }
 }
