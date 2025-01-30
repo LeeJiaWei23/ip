@@ -2,9 +2,11 @@ import java.util.ArrayList;
 
 public class TaskList {
     private final ArrayList<Task> tasks;
+    private final Storage storage;
 
-    public TaskList() {
-        tasks = new ArrayList<>();
+    public TaskList(ArrayList<Task> tasks, Storage storage) {
+        this.tasks = tasks;
+        this.storage = storage;
     }
 
     public String addItem(CommandType command, String item) throws ClippyException {
@@ -44,6 +46,7 @@ public class TaskList {
                 tasks.add(new Event(description, start, end));
             }
         }
+        storage.save(tasks);
         return tasks.get(tasks.size() - 1).toString();
     }
 

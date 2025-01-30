@@ -1,5 +1,5 @@
-public class Task {
-    private final String description;
+public abstract class Task {
+    protected final String description;
     protected boolean isDone;
 
     public Task(String description) {
@@ -21,4 +21,6 @@ public class Task {
     public void markAsUndone() {
         this.isDone = false;
     }
+
+    public abstract String toFileFormat();
 }

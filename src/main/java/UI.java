@@ -39,4 +39,12 @@ public class UI {
         String taskOrTasks = (taskNum == 1 ? "task" : "tasks");
         return encloseText(String.format(template, input, taskNum, taskOrTasks));
     }
+
+    public static String loadedFileString() {
+        return encloseText("Loaded saved list from ./data/tasks.txt");
+    }
+
+    public static String createFileString() {
+        return encloseText("Created new saved list at ./data/tasks.txt");
+    }
 }

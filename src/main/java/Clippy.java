@@ -4,7 +4,9 @@ public class Clippy {
     public static void main(String[] args) {
         System.out.print(UI.getGreeting());
         Scanner reader = new Scanner(System.in);
-        TaskList taskList = new TaskList();
+
+        Storage storage = new Storage();
+        TaskList taskList = storage.load();
 
         while (true) {
             if (!reader.hasNextLine()) {
