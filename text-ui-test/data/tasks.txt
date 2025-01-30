@@ -1,0 +1,4 @@
+T | 0 | borrow book
+D | 0 | return book | 11/11/2024 1000
+D | 0 | return book | 11/11/2024 1000
+E | 0 | project meeting | 12/12/2024 1200 - 12/12/2024 1300

@@ -3,61 +3,54 @@
      How can I help?
     ____________________________________________________________
     ____________________________________________________________
+     Loaded saved list from ./data/tasks.txt
+    ____________________________________________________________
+    ____________________________________________________________
      Got it. This task will be added to the list:
        [T][ ] borrow book
      Now you have 1 task in the list.
     ____________________________________________________________
     ____________________________________________________________
      Got it. This task will be added to the list:
-       [D][ ] return book (by: Sunday)
+       [D][ ] return book (by: 11 Nov 2024, 10:00 am)
      Now you have 2 tasks in the list.
     ____________________________________________________________
     ____________________________________________________________
+     Invalid date/time format: no idea. Expected: DD/MM/YYYY 2000 E.g. 01/01/2025 2000
+    ____________________________________________________________
+    ____________________________________________________________
      Got it. This task will be added to the list:
-       [D][ ] return book (by: no idea)
+       [E][ ] project meeting (from: 12 Dec 2024, 12:00 pm to: 12 Dec 2024, 1:00 pm)
      Now you have 3 tasks in the list.
     ____________________________________________________________
     ____________________________________________________________
-     Got it. This task will be added to the list:
-       [E][ ] project meeting (from: Mon 2pm to: 4pm)
-     Now you have 4 tasks in the list.
-    ____________________________________________________________
-    ____________________________________________________________
-     Got it. This task will be added to the list:
-       [E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
-     Now you have 5 tasks in the list.
+     Oh no. Please add a time / date to the task :(
     ____________________________________________________________
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][ ] return book (by: Sunday)
-     3.[D][ ] return book (by: no idea)
-     4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
-     5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+     2.[D][ ] return book (by: 11 Nov 2024, 10:00 am)
+     3.[E][ ] project meeting (from: 12 Dec 2024, 12:00 pm to: 12 Dec 2024, 1:00 pm)
     ____________________________________________________________
     ____________________________________________________________
      Well Done! This task is mark as done:
-       [D][X] return book (by: Sunday)
+       [D][X] return book (by: 11 Nov 2024, 10:00 am)
     ____________________________________________________________
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][X] return book (by: Sunday)
-     3.[D][ ] return book (by: no idea)
-     4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
-     5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+     2.[D][X] return book (by: 11 Nov 2024, 10:00 am)
+     3.[E][ ] project meeting (from: 12 Dec 2024, 12:00 pm to: 12 Dec 2024, 1:00 pm)
     ____________________________________________________________
     ____________________________________________________________
      OK. This task is mark as not done:
-       [D][ ] return book (by: Sunday)
+       [D][ ] return book (by: 11 Nov 2024, 10:00 am)
     ____________________________________________________________
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][ ] return book (by: Sunday)
-     3.[D][ ] return book (by: no idea)
-     4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
-     5.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+     2.[D][ ] return book (by: 11 Nov 2024, 10:00 am)
+     3.[E][ ] project meeting (from: 12 Dec 2024, 12:00 pm to: 12 Dec 2024, 1:00 pm)
     ____________________________________________________________
     ____________________________________________________________
      Oh no. Please add a description for ToDo task :(
@@ -70,15 +63,13 @@
     ____________________________________________________________
     ____________________________________________________________
      Got it. This task will be removed from the list:
-       [D][ ] return book (by: no idea)
-     Now you have 4 tasks in the list.
+       [E][ ] project meeting (from: 12 Dec 2024, 12:00 pm to: 12 Dec 2024, 1:00 pm)
+     Now you have 2 tasks in the list.
     ____________________________________________________________
     ____________________________________________________________
      Current Tasks in Your List:
      1.[T][ ] borrow book
-     2.[D][ ] return book (by: Sunday)
-     3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
-     4.[E][ ] project meeting (from: Mon 2pm to: Tue 4pm)
+     2.[D][ ] return book (by: 11 Nov 2024, 10:00 am)
     ____________________________________________________________
     ____________________________________________________________
      Oh no. foo is not a valid integer :(

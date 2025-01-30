@@ -18,6 +18,16 @@ public class UI {
         return encloseText("Goodbye. Look forward to our next chat!");
     }
 
+    public static String displayListString(ArrayList<Task> tasks) {
+        StringBuilder result = new StringBuilder("Current Tasks in Your List:\n");
+        for (int i = 0; i < tasks.size(); i++) {
+            result.append("     ")
+                    .append(i + 1).append(".")
+                    .append(tasks.get(i).toString()).append("\n");
+        }
+        return encloseText(result.toString());
+    }
+
     public static String markTaskString(String input) {
         return encloseText("Well Done! This task is mark as done:\n"
                 + "       " + input);

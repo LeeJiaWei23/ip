@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -88,18 +89,12 @@ public class TaskList {
         return tasks.get(index - 1).toString();
     }
 
-    public String displayList() {
-        StringBuilder result = new StringBuilder("Current Tasks in Your List:\n");
-        for (int i = 0; i < tasks.size(); i++) {
-            result.append("     ")
-                  .append(i + 1).append(".")
-                  .append(tasks.get(i).toString()).append("\n");
-        }
-        return result.toString();
-    }
-
     public int getTaskNum() {
         return tasks.size();
+    }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
     }
 
     public ArrayList<Task> displayFilteredList(LocalDate target) {
