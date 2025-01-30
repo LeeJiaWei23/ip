@@ -60,7 +60,7 @@ public class Storage {
         return new TaskList(tasks, this);
     }
 
-    public void save(ArrayList<Task> tasks) {
+    public void update(ArrayList<Task> tasks) {
         List<String> lines = new ArrayList<>();
         for (Task task : tasks) {
             lines.add(task.toFileFormat());

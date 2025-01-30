@@ -48,7 +48,7 @@ public class TaskList {
                 tasks.add(new Event(description, start, end));
             }
         }
-        storage.save(tasks);
+        storage.update(tasks);
         return tasks.get(tasks.size() - 1).toString();
     }
 
@@ -71,6 +71,7 @@ public class TaskList {
         int index = validateIndex(indexStr, tasks.size());
         String description = tasks.get(index - 1).toString();
         tasks.remove(index - 1);
+        storage.update(tasks);
         return description;
     }
 
