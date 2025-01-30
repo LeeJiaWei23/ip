@@ -22,4 +22,12 @@ public class ClippyException extends Exception {
     public static ClippyException invalidInteger(String indexStr) throws ClippyException {
         return new ClippyException("Oh no. " + indexStr + " is not a valid integer :(");
     }
+
+    public static ClippyException invalidDateTime(String input) {
+        return new ClippyException("Invalid date/time format: " + input + ". Expected: DD/MM/YYYY 2000 E.g. 01/01/2025 2000");
+    }
+
+    public static ClippyException invalidDate(String input) {
+        return new ClippyException("Invalid date format: " + input + ". Expected: DD/MM/YYYY E.g. 01/01/2025 2000");
+    }
 }

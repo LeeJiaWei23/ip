@@ -6,5 +6,6 @@ public enum CommandType {
     DELETE,
     TODO,
     DEADLINE,
-    EVENT
+    EVENT,
+    FIND
 }

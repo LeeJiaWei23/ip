@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -25,10 +26,11 @@ public class TaskList {
                 if (description.isEmpty()) {
                     throw ClippyException.emptyDescription("Deadline");
                 }
-                String date = parts[1].trim();
-                if (date.isEmpty()) {
+
+                if (parts.length < 2) {
                     throw ClippyException.emptyTime();
                 }
+                String date = parts[1].trim();
                 tasks.add(new Deadline(description, date));
             }
             case EVENT -> {
@@ -38,15 +40,16 @@ public class TaskList {
                 if (description.isEmpty()) {
                     throw ClippyException.emptyDescription("Event");
                 }
-                String start = parts[1].trim();
-                String end = parts[2].trim();
-                if (start.isEmpty() || end.isEmpty()) {
+
+                if (parts.length < 2) {
                     throw ClippyException.emptyTime();
                 }
+                String start = parts[1].trim();
+                String end = parts[2].trim();
                 tasks.add(new Event(description, start, end));
             }
         }
-        storage.save(tasks);
+        storage.update(tasks);
         return tasks.get(tasks.size() - 1).toString();
     }
 
@@ -69,6 +72,7 @@ public class TaskList {
         int index = validateIndex(indexStr, tasks.size());
         String description = tasks.get(index - 1).toString();
         tasks.remove(index - 1);
+        storage.update(tasks);
         return description;
     }
 
@@ -96,5 +100,23 @@ public class TaskList {
 
     public int getTaskNum() {
         return tasks.size();
+    }
+
+    public ArrayList<Task> displayFilteredList(LocalDate target) {
+        ArrayList<Task> matchedTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task instanceof Deadline deadlineTask) {
+                if (deadlineTask.getByDate().toLocalDate().equals(target)) {
+                    matchedTasks.add(deadlineTask);
+                }
+            } else if (task instanceof Event eventTask) {
+                if (eventTask.getStart().toLocalDate().equals(target) ||
+                        eventTask.getEnd().toLocalDate().equals(target)) {
+                    matchedTasks.add(eventTask);
+                }
+            }
+        }
+        return matchedTasks;
     }
 }
