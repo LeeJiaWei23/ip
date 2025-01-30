@@ -1,18 +1,25 @@
-public class Event  extends Task {
-    private final String start;
-    private final String end;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-    Event(String description, String start, String end) {
+public class Event  extends Task {
+    private final LocalDateTime start;
+    private final LocalDateTime end;
+    private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
+    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+
+    Event(String description, String start, String end) throws ClippyException {
         super(description);
-        this.start = start;
-        this.end = end;
+        this.start = parseDate(start);
+        this.end = parseDate(end);
     }
 
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + start + " to: " + end + ")";
+        return "[E]" + super.toString() + " (from: " + start.format(OUTPUT_FORMAT) + " to: "
+                + end.format(OUTPUT_FORMAT) + ")";
     }
 
     public String toFileFormat() {
-        return "E | " + (isDone ? "1" : "0") + " | " + super.description + " | " + start + " - " + end;
+        return "E | " + (isDone ? "1" : "0") + " | " + super.description + " | "
+                + start.format(INPUT_FORMAT) + " - " + end.format(INPUT_FORMAT);
     }
 }

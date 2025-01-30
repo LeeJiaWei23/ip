@@ -27,7 +27,7 @@ public class Storage {
         }
     }
 
-    private void addTaskFromFile(ArrayList<Task> tasks, String input) {
+    private void addTaskFromFile(ArrayList<Task> tasks, String input) throws ClippyException {
         String[] data = input.split("\\|");
         String type = data[0].trim();
         String isDone = data[1].trim();
@@ -54,7 +54,7 @@ public class Storage {
             for (String input : inputStrings) {
                 addTaskFromFile(tasks, input);
             }
-        } catch (IOException e) {
+        } catch (IOException | ClippyException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
         return new TaskList(tasks, this);
