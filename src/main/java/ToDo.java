@@ -7,4 +7,8 @@ public class ToDo extends Task {
     public String toString() {
         return "[T]" + super.toString();
     }
+
+    public String toFileFormat() {
+        return "T | " + (isDone ? "1" : "0") + " | " + super.description;
+    }
 }
