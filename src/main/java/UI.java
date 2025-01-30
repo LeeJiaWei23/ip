@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 public class UI {
     private static final String HORIZONTAL_LINE = "    ____________________________________________________________\n";
 
@@ -46,5 +50,21 @@ public class UI {
 
     public static String createFileString() {
         return encloseText("Created new saved list at ./data/tasks.txt");
+    }
+
+    public static String filteredTaskString(ArrayList<Task> tasks, LocalDate target) {
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("d MMM yyyy");
+        if (tasks.isEmpty()) {
+            return encloseText("No tasks found for " + target.format(outputFormat));
+        }
+
+        StringBuilder result = new StringBuilder("Tasks on " + target.format(outputFormat) + "\n");
+
+        for (int i = 0; i < tasks.size(); i++) {
+            result.append("     ")
+                    .append(i + 1).append(".")
+                    .append(tasks.get(i).toString()).append("\n");
+        }
+        return encloseText(result.toString());
     }
 }

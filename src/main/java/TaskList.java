@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -99,5 +100,23 @@ public class TaskList {
 
     public int getTaskNum() {
         return tasks.size();
+    }
+
+    public ArrayList<Task> displayFilteredList(LocalDate target) {
+        ArrayList<Task> matchedTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task instanceof Deadline deadlineTask) {
+                if (deadlineTask.getByDate().toLocalDate().equals(target)) {
+                    matchedTasks.add(deadlineTask);
+                }
+            } else if (task instanceof Event eventTask) {
+                if (eventTask.getStart().toLocalDate().equals(target) ||
+                        eventTask.getEnd().toLocalDate().equals(target)) {
+                    matchedTasks.add(eventTask);
+                }
+            }
+        }
+        return matchedTasks;
     }
 }

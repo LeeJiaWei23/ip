@@ -30,6 +30,7 @@ public abstract class Task {
     public abstract String toFileFormat();
 
     public LocalDateTime parseDate(String input) throws ClippyException {
+        //System.out.println(input);
         try {
             return LocalDateTime.parse(input, INPUT_FORMAT);
         } catch (DateTimeParseException e) {

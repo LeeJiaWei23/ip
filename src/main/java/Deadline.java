@@ -18,4 +18,8 @@ public class Deadline extends Task {
     public String toFileFormat() {
         return "D | " + (isDone ? "1" : "0") + " | " + super.description + " | " + by.format(INPUT_FORMAT);
     }
+
+    public LocalDateTime getByDate() {
+        return by;
+    }
 }

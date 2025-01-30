@@ -10,6 +10,7 @@ public class Parser {
             case DELETE -> new DeleteCommand(arguments);
             case TODO, DEADLINE, EVENT -> new AddCommand(commandType, input);
             case BYE -> new ByeCommand();
+            case FIND -> new FindCommand(arguments);
         };
     }
 

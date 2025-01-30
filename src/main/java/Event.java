@@ -22,4 +22,12 @@ public class Event  extends Task {
         return "E | " + (isDone ? "1" : "0") + " | " + super.description + " | "
                 + start.format(INPUT_FORMAT) + " - " + end.format(INPUT_FORMAT);
     }
+
+    public LocalDateTime getStart() {
+        return start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
+    }
 }
