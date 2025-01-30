@@ -1,4 +1,11 @@
+package clippy;
+
 import java.util.Scanner;
+import clippy.command.Command;
+import clippy.parser.Parser;
+import clippy.storage.Storage;
+import clippy.task.TaskList;
+import clippy.ui.UI;
 
 public class Clippy {
     public static void main(String[] args) {

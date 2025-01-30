@@ -1,9 +1,18 @@
+package clippy.storage;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import clippy.ClippyException;
+import clippy.task.Deadline;
+import clippy.task.Task;
+import clippy.task.TaskList;
+import clippy.task.ToDo;
+import clippy.ui.UI;
+import clippy.task.Event;
 
 public class Storage {
     private final Path filePath;

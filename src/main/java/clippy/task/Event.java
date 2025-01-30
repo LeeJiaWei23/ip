@@ -1,3 +1,6 @@
+package clippy.task;
+
+import clippy.ClippyException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -7,7 +10,7 @@ public class Event  extends Task {
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
 
-    Event(String description, String start, String end) throws ClippyException {
+    public Event(String description, String start, String end) throws ClippyException {
         super(description);
         this.start = parseDate(start);
         this.end = parseDate(end);

@@ -1,3 +1,9 @@
+package clippy.command;
+
+import clippy.ClippyException;
+import clippy.task.TaskList;
+import clippy.ui.UI;
+
 public class AddCommand implements Command {
     private final String item;
     private final CommandType command;
