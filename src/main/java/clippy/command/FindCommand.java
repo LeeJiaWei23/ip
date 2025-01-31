@@ -1,15 +1,16 @@
 package clippy.command;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import clippy.ClippyException;
 import clippy.task.TaskList;
 import clippy.ui.UI;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 public class FindCommand implements Command {
-    private final String dateStr;
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final String dateStr;
 
     public FindCommand(String dateStr) {
         this.dateStr = dateStr;

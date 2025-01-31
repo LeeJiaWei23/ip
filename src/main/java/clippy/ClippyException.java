@@ -26,7 +26,8 @@ public class ClippyException extends Exception {
     }
 
     public static ClippyException invalidDateTime(String input) {
-        return new ClippyException("Invalid date/time format: " + input + ". Expected: DD/MM/YYYY 2000 E.g. 01/01/2025 2000");
+        return new ClippyException("Invalid date/time format: " + input
+                + ". Expected: DD/MM/YYYY 2000 E.g. 01/01/2025 2000");
     }
 
     public static ClippyException invalidDate(String input) {

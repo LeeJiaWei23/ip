@@ -1,6 +1,7 @@
 package clippy;
 
 import java.util.Scanner;
+
 import clippy.command.Command;
 import clippy.parser.Parser;
 import clippy.storage.Storage;
