@@ -5,12 +5,24 @@ import java.time.format.DateTimeFormatter;
 
 import clippy.ClippyException;
 
+/**
+ * Represents a task that is an event.
+ * An event task has a description, a start time, and an end time.
+ */
 public class Event extends Task {
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
     private final LocalDateTime start;
     private final LocalDateTime end;
 
+    /**
+     * Constructs an Event task with the specified description, start time, and end time.
+     *
+     * @param description The description of the event.
+     * @param start The start date and time in the format "dd/MM/yyyy HHmm".
+     * @param end The end date and time in the format "dd/MM/yyyy HHmm".
+     * @throws ClippyException If the date format is invalid.
+     */
     public Event(String description, String start, String end) throws ClippyException {
         super(description);
         this.start = parseDate(start);
@@ -22,6 +34,11 @@ public class Event extends Task {
                 + end.format(OUTPUT_FORMAT) + ")";
     }
 
+    /**
+     * Returns the string representation of the event in file format.
+     *
+     * @return A formatted string suitable for saving the task to a file.
+     */
     public String toFileFormat() {
         return "E | " + (isDone ? "1" : "0") + " | " + super.description + " | "
                 + start.format(INPUT_FORMAT) + " - " + end.format(INPUT_FORMAT);
