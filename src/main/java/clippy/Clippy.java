@@ -20,8 +20,10 @@ public class Clippy {
             if (!reader.hasNextLine()) {
                 break;
             }
+
             String input = reader.nextLine();
             Command command;
+
             try {
                 command = Parser.parse(input);
                 command.execute(taskList);

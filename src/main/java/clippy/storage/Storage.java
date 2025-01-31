@@ -103,6 +103,7 @@ public class Storage {
      */
     public void update(ArrayList<Task> tasks) {
         List<String> lines = new ArrayList<>();
+
         for (Task task : tasks) {
             lines.add(task.toFileFormat());
         }

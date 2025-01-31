@@ -63,7 +63,6 @@ public abstract class Task {
      * @throws ClippyException If the date format is invalid.
      */
     public LocalDateTime parseDate(String input) throws ClippyException {
-        //System.out.println(input);
         try {
             return LocalDateTime.parse(input, INPUT_FORMAT);
         } catch (DateTimeParseException e) {
