@@ -81,4 +81,19 @@ public class UI {
         }
         return encloseText(result.toString());
     }
+
+    public static String findTaskString(ArrayList<Task> tasks) {
+        if (tasks.isEmpty()) {
+            return encloseText("No task matching task in list");
+        }
+
+        StringBuilder result = new StringBuilder("Tasks that match your search in your list\n");
+
+        for (int i = 0; i < tasks.size(); i++) {
+            result.append("     ")
+                    .append(i + 1).append(".")
+                    .append(tasks.get(i).toString()).append("\n");
+        }
+        return encloseText(result.toString());
+    }
 }
