@@ -11,7 +11,19 @@ import clippy.command.ListCommand;
 import clippy.command.MarkCommand;
 import clippy.command.UnmarkCommand;
 
+/**
+ * Handles the parsing of user input and converts it to its corresponding command objects.
+ * The parser identifies the command type and provides arguments before creating the command.
+ */
 public class Parser {
+
+    /**
+     * Parses the user input and returns the corresponding command.
+     *
+     * @param input The raw input string entered by the user.
+     * @return A Command object representing the parsed user input.
+     * @throws ClippyException If the input does not match any valid command format.
+     */
     public static Command parse(String input) throws ClippyException {
         String[] words = input.split(" ");
         String arguments = (words.length < 2 ? "" : words[1]);
@@ -28,6 +40,13 @@ public class Parser {
         };
     }
 
+    /**
+     * Identifies the CommandType from the given command string.
+     *
+     * @param command The command keyword extracted from the user's input.
+     * @return The corresponding CommandType enum value.
+     * @throws ClippyException If the command is not recognized.
+     */
     private static CommandType getCommandType(String command) throws ClippyException {
         try {
             return CommandType.valueOf(command.toUpperCase());
