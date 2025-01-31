@@ -2,14 +2,15 @@ package clippy.task;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import clippy.command.CommandType;
 import clippy.ClippyException;
 import clippy.storage.Storage;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TaskListTest {
     private TaskList tasks;
