@@ -6,7 +6,7 @@ import clippy.command.ByeCommand;
 import clippy.command.Command;
 import clippy.command.CommandType;
 import clippy.command.DeleteCommand;
-import clippy.command.FindCommand;
+import clippy.command.FilterCommand;
 import clippy.command.ListCommand;
 import clippy.command.MarkCommand;
 import clippy.command.UnmarkCommand;
@@ -24,7 +24,7 @@ public class Parser {
         case DELETE -> new DeleteCommand(arguments);
         case TODO, DEADLINE, EVENT -> new AddCommand(commandType, input);
         case BYE -> new ByeCommand();
-        case FIND -> new FindCommand(arguments);
+        case FILTER -> new FilterCommand(arguments);
         };
     }
 

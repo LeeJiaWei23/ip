@@ -8,11 +8,11 @@ import clippy.ClippyException;
 import clippy.task.TaskList;
 import clippy.ui.UI;
 
-public class FindCommand implements Command {
+public class FilterCommand implements Command {
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final String dateStr;
 
-    public FindCommand(String dateStr) {
+    public FilterCommand(String dateStr) {
         this.dateStr = dateStr;
     }
 
