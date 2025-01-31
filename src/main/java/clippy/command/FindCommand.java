@@ -1,34 +1,49 @@
 package clippy.command;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
-import clippy.ClippyException;
+import clippy.task.Task;
 import clippy.task.TaskList;
 import clippy.ui.UI;
 
+/**
+ * Represents a command that searches for tasks containing a specified keyword in their description.
+ * The search is case-insensitive and matches partial words.
+ */
 public class FindCommand implements Command {
-    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private final String dateStr;
+    private final String keyword;
 
-    public FindCommand(String dateStr) {
-        this.dateStr = dateStr;
+    /**
+     * Constructs a FindCommand with the specified keyword.
+     *
+     * @param keyword The keyword to search for in task descriptions.
+     */
+    public FindCommand(String keyword) {
+        this.keyword = keyword;
     }
 
-    public void execute(TaskList tasks) throws ClippyException {
-        LocalDate target = parseDate(dateStr);
-        System.out.print(UI.filteredTaskString(tasks.displayFilteredList(target), target));
-    }
+    /**
+     * Executes the command to find and display tasks that match the given keyword.
+     *
+     * @param tasks The task list to search within.
+     */
+    public void execute(TaskList tasks) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
 
-    private LocalDate parseDate(String input) throws ClippyException {
-        try {
-            return LocalDate.parse(input, INPUT_FORMAT);
-        } catch (DateTimeParseException e) {
-            throw ClippyException.invalidDate(input);
+        for (Task task : tasks.getTasks()) {
+            if (task.toString().toLowerCase().contains(keyword.toLowerCase())) {
+                matchingTasks.add(task);
+            }
         }
+
+        System.out.print(UI.findTaskString(matchingTasks));
     }
 
+    /**
+     * Determines whether this command should cause the program to exit.
+     *
+     * @return false, since finding a task does not end the program.
+     */
     public boolean isExit() {
         return false;
     }

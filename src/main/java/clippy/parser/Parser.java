@@ -1,15 +1,7 @@
 package clippy.parser;
 
 import clippy.ClippyException;
-import clippy.command.AddCommand;
-import clippy.command.ByeCommand;
-import clippy.command.Command;
-import clippy.command.CommandType;
-import clippy.command.DeleteCommand;
-import clippy.command.FindCommand;
-import clippy.command.ListCommand;
-import clippy.command.MarkCommand;
-import clippy.command.UnmarkCommand;
+import clippy.command.*;
 
 /**
  * Handles the parsing of user input and converts it to its corresponding command objects.
@@ -36,6 +28,7 @@ public class Parser {
         case DELETE -> new DeleteCommand(arguments);
         case TODO, DEADLINE, EVENT -> new AddCommand(commandType, input);
         case BYE -> new ByeCommand();
+        case FILTER -> new FilterCommand(arguments);
         case FIND -> new FindCommand(arguments);
         };
     }
