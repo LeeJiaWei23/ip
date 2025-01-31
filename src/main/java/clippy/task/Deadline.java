@@ -1,13 +1,14 @@
 package clippy.task;
 
-import clippy.ClippyException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import clippy.ClippyException;
+
 public class Deadline extends Task {
-    private final LocalDateTime by;
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+    private final LocalDateTime by;
 
     public Deadline(String description, String by) throws ClippyException {
         super(description);

@@ -1,10 +1,11 @@
 package clippy.task;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import clippy.ClippyException;
 import clippy.command.CommandType;
 import clippy.storage.Storage;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TaskList {
     private final ArrayList<Task> tasks;
@@ -17,42 +18,42 @@ public class TaskList {
 
     public String addItem(CommandType command, String item) throws ClippyException {
         switch (command) {
-            case TODO -> {
-                String description = item.substring(4).trim();
-                if (description.isEmpty()) {
-                    throw ClippyException.emptyDescription("ToDo");
-                }
-                tasks.add(new ToDo(description));
+        case TODO -> {
+            String description = item.substring(4).trim();
+            if (description.isEmpty()) {
+                throw ClippyException.emptyDescription("ToDo");
             }
-            case DEADLINE -> {
-                String text = item.substring(8);
-                String[] parts = text.split("/by");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw ClippyException.emptyDescription("Deadline");
-                }
+            tasks.add(new ToDo(description));
+        }
+        case DEADLINE -> {
+            String text = item.substring(8);
+            String[] parts = text.split("/by");
+            String description = parts[0].trim();
+            if (description.isEmpty()) {
+                throw ClippyException.emptyDescription("Deadline");
+            }
 
-                if (parts.length < 2) {
-                    throw ClippyException.emptyTime();
-                }
-                String date = parts[1].trim();
-                tasks.add(new Deadline(description, date));
+            if (parts.length < 2) {
+                throw ClippyException.emptyTime();
             }
-            case EVENT -> {
-                String text = item.substring(5);
-                String[] parts = text.split(" /from | /to ");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw ClippyException.emptyDescription("Event");
-                }
+            String date = parts[1].trim();
+            tasks.add(new Deadline(description, date));
+        }
+        case EVENT -> {
+            String text = item.substring(5);
+            String[] parts = text.split(" /from | /to ");
+            String description = parts[0].trim();
+            if (description.isEmpty()) {
+                throw ClippyException.emptyDescription("Event");
+            }
 
-                if (parts.length < 2) {
-                    throw ClippyException.emptyTime();
-                }
-                String start = parts[1].trim();
-                String end = parts[2].trim();
-                tasks.add(new Event(description, start, end));
+            if (parts.length < 2) {
+                throw ClippyException.emptyTime();
             }
+            String start = parts[1].trim();
+            String end = parts[2].trim();
+            tasks.add(new Event(description, start, end));
+        }
         }
         storage.update(tasks);
         return tasks.get(tasks.size() - 1).toString();
@@ -110,8 +111,8 @@ public class TaskList {
                     matchedTasks.add(deadlineTask);
                 }
             } else if (task instanceof Event eventTask) {
-                if (eventTask.getStart().toLocalDate().equals(target) ||
-                        eventTask.getEnd().toLocalDate().equals(target)) {
+                if (eventTask.getStart().toLocalDate().equals(target)
+                        || eventTask.getEnd().toLocalDate().equals(target)) {
                     matchedTasks.add(eventTask);
                 }
             }

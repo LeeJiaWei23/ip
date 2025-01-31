@@ -1,9 +1,10 @@
 package clippy.ui;
 
-import clippy.task.Task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import clippy.task.Task;
 
 public class UI {
     private static final String HORIZONTAL_LINE = "    ____________________________________________________________\n";
@@ -13,8 +14,8 @@ public class UI {
     }
 
     public static String getGreeting() {
-        return encloseText("Hey! I'm Clippy. Your personal assistant chatbot\n" +
-                "     " + "How can I help?");
+        return encloseText("Hey! I'm Clippy. Your personal assistant chatbot\n"
+                + "     " + "How can I help?");
     }
 
     public static String getGoodbye() {
@@ -38,7 +39,7 @@ public class UI {
 
     public static String unmarkTaskString(String input) {
         return encloseText("OK. This task is mark as not done:\n"
-                + "       "  + input);
+                + "       " + input);
     }
 
     public static String addTaskString(String input, int taskNum) {

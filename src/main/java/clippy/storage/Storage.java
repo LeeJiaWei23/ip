@@ -1,24 +1,25 @@
 package clippy.storage;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
 import clippy.ClippyException;
 import clippy.task.Deadline;
+import clippy.task.Event;
 import clippy.task.Task;
 import clippy.task.TaskList;
 import clippy.task.ToDo;
 import clippy.ui.UI;
-import clippy.task.Event;
 
 public class Storage {
     private final Path filePath;
 
     public Storage() {
-        this.filePath = Paths.get(".","data", "tasks.txt");
+        this.filePath = Paths.get(".", "data", "tasks.txt");
         checkFileExist();
     }
 
@@ -41,13 +42,14 @@ public class Storage {
         String type = data[0].trim();
         String isDone = data[1].trim();
         String description = data[2].trim();
+
         switch (type) {
-            case "T" -> tasks.add(new ToDo(description));
-            case "D" -> tasks.add(new Deadline(description, data[3].trim()));
-            case "E" -> {
-                String[] time = data[3].split("-");
-                tasks.add(new Event(description, time[0].trim(), time[1].trim()));
-            }
+        case "T" -> tasks.add(new ToDo(description));
+        case "D" -> tasks.add(new Deadline(description, data[3].trim()));
+        case "E" -> {
+            String[] time = data[3].split("-");
+            tasks.add(new Event(description, time[0].trim(), time[1].trim()));
+        }
         }
 
         if (isDone.equals("1")) {
