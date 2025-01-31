@@ -37,7 +37,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "clippy"
+    archiveFileName = "clippy.jar"
     archiveClassifier = null
 }
 
