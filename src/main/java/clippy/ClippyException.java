@@ -1,5 +1,9 @@
 package clippy;
 
+/**
+ * Represents exceptions specific to the Clippy application.
+ * This exception is thrown when an invalid operation or input is encountered.
+ */
 public class ClippyException extends Exception {
     public ClippyException(String message) {
         super(message);
@@ -25,6 +29,14 @@ public class ClippyException extends Exception {
         return new ClippyException("Oh no. " + indexStr + " is not a valid integer :(");
     }
 
+    /**
+     * Creates an exception indicating an invalid date/time format.
+     * This exception is thrown when a user provides a date/time that does not match
+     * the expected format.
+     *
+     * @param input The invalid date/time string provided by the user.
+     * @return A {@code ClippyException} with a message explaining the correct format.
+     */
     public static ClippyException invalidDateTime(String input) {
         return new ClippyException("Invalid date/time format: " + input
                 + ". Expected: DD/MM/YYYY 2000 E.g. 01/01/2025 2000");

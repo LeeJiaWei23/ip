@@ -37,42 +37,43 @@ public class TaskList {
      */
     public String addItem(CommandType command, String item) throws ClippyException {
         switch (command) {
-        case TODO -> {
-            String description = item.substring(4).trim();
-            if (description.isEmpty()) {
-                throw ClippyException.emptyDescription("ToDo");
+            case TODO -> {
+                String description = item.substring(4).trim();
+                if (description.isEmpty()) {
+                    throw ClippyException.emptyDescription("ToDo");
+                }
+                tasks.add(new ToDo(description));
             }
-            tasks.add(new ToDo(description));
-        }
-        case DEADLINE -> {
-            String text = item.substring(8);
-            String[] parts = text.split("/by");
-            String description = parts[0].trim();
-            if (description.isEmpty()) {
-                throw ClippyException.emptyDescription("Deadline");
-            }
+            case DEADLINE -> {
+                String text = item.substring(8);
+                String[] parts = text.split("/by");
+                String description = parts[0].trim();
+                if (description.isEmpty()) {
+                    throw ClippyException.emptyDescription("Deadline");
+                }
 
-            if (parts.length < 2) {
-                throw ClippyException.emptyTime();
+                if (parts.length < 2) {
+                    throw ClippyException.emptyTime();
+                }
+                String date = parts[1].trim();
+                tasks.add(new Deadline(description, date));
             }
-            String date = parts[1].trim();
-            tasks.add(new Deadline(description, date));
-        }
-        case EVENT -> {
-            String text = item.substring(5);
-            String[] parts = text.split(" /from | /to ");
-            String description = parts[0].trim();
-            if (description.isEmpty()) {
-                throw ClippyException.emptyDescription("Event");
-            }
+            case EVENT -> {
+                String text = item.substring(5);
+                String[] parts = text.split(" /from | /to ");
+                String description = parts[0].trim();
+                if (description.isEmpty()) {
+                    throw ClippyException.emptyDescription("Event");
+                }
 
-            if (parts.length < 2) {
-                throw ClippyException.emptyTime();
+                if (parts.length < 2) {
+                    throw ClippyException.emptyTime();
+                }
+                String start = parts[1].trim();
+                String end = parts[2].trim();
+                tasks.add(new Event(description, start, end));
             }
-            String start = parts[1].trim();
-            String end = parts[2].trim();
-            tasks.add(new Event(description, start, end));
-        }
+            default -> throw ClippyException.unknownCommand();
         }
         storage.update(tasks);
         return tasks.get(tasks.size() - 1).toString();

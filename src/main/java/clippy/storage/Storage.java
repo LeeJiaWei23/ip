@@ -70,6 +70,7 @@ public class Storage {
             String[] time = data[3].split("-");
             tasks.add(new Event(description, time[0].trim(), time[1].trim()));
         }
+        default -> throw new ClippyException("Invalid task type found in storage file: " + type);
         }
 
         if (isDone.equals("1")) {
