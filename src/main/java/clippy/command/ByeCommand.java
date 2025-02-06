@@ -14,8 +14,8 @@ public class ByeCommand implements Command {
      *
      * @param tasks The task list, which remains unchanged.
      */
-    public void execute(TaskList tasks) {
-        System.out.print(UI.getGoodbye());
+    public String execute(TaskList tasks) {
+        return UI.getGoodbye();
     }
 
     /**

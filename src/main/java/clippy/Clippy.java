@@ -15,31 +15,27 @@ import clippy.ui.UI;
  * until an exit command is given.
  */
 public class Clippy {
-    public static void main(String[] args) {
-        System.out.print(UI.getGreeting());
-        Scanner reader = new Scanner(System.in);
+    private final Storage storage;
+    private TaskList tasks;
+    private String commandType;
 
-        Storage storage = new Storage();
-        TaskList taskList = storage.load();
+    public Clippy() {
+        this.storage = new Storage();
+        this.tasks = storage.load();
+    }
 
-        while (true) {
-            if (!reader.hasNextLine()) {
-                break;
-            }
-
-            String input = reader.nextLine();
-            Command command;
-
-            try {
-                command = Parser.parse(input);
-                command.execute(taskList);
-                if (command.isExit()) {
-                    break;
-                }
-            } catch (ClippyException e) {
-                System.out.print(UI.encloseText(e.getMessage()));
-            }
+    public String getResponse(String input) {
+        Command command;
+        try {
+            command = Parser.parse(input);
+            commandType = command.getClass().getSimpleName();
+            return command.execute(tasks);
+        } catch (ClippyException e) {
+            return UI.encloseText((e.getMessage()));
         }
-        reader.close();
+    }
+
+    public String getCommandType() {
+        return commandType;
     }
 }

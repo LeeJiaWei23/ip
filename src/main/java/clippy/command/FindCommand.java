@@ -27,7 +27,7 @@ public class FindCommand implements Command {
      *
      * @param tasks The task list to search within.
      */
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         ArrayList<Task> matchingTasks = new ArrayList<>();
 
         for (Task task : tasks.getTasks()) {
@@ -36,7 +36,7 @@ public class FindCommand implements Command {
             }
         }
 
-        System.out.print(UI.findTaskString(matchingTasks));
+        return UI.findTaskString(matchingTasks);
     }
 
     /**

@@ -15,8 +15,8 @@ public class ListCommand implements Command {
      *
      * @param tasks The task list containing the tasks to be displayed.
      */
-    public void execute(TaskList tasks) {
-        System.out.print(UI.displayListString(tasks.getTasks()));
+    public String execute(TaskList tasks) {
+        return UI.displayListString(tasks.getTasks());
     }
 
     /**

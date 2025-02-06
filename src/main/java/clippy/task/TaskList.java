@@ -121,6 +121,7 @@ public class TaskList {
     public String markTask(String indexStr) throws ClippyException {
         int index = validateIndex(indexStr, tasks.size());
         tasks.get(index - 1).markAsDone();
+        storage.update(tasks);
         return tasks.get(index - 1).toString();
     }
 
@@ -134,6 +135,7 @@ public class TaskList {
     public String unmarkTask(String indexStr) throws ClippyException {
         int index = validateIndex(indexStr, tasks.size());
         tasks.get(index - 1).markAsUndone();
+        storage.update(tasks);
         return tasks.get(index - 1).toString();
     }
 

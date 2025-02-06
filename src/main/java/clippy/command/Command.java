@@ -8,6 +8,6 @@ import clippy.task.TaskList;
  * Implementing classes define specific actions to be performed on a task list.
  */
 public interface Command {
-    void execute(TaskList tasks) throws ClippyException;
+    String execute(TaskList tasks) throws ClippyException;
     boolean isExit();
 }
