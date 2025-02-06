@@ -16,8 +16,6 @@ public class MainWindow extends AnchorPane {
     private VBox dialogContainer;
     @FXML
     private TextField userInput;
-    @FXML
-    private Button sendButton;
 
     private Clippy clippy;
 
@@ -34,18 +32,17 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
+     * Creates two dialog boxes, one echoing user input and the other containing Clippy's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
     @FXML
     private void handleUserInput() {
         String userText = userInput.getText();
         String clippyText = clippy.getResponse(userInput.getText());
+        String commandType = clippy.getCommandType();
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(userText, userImage),
-                DialogBox.getClippyDialog(clippyText, clippyImage)
-
-        );
+                DialogBox.getClippyDialog(clippyText, clippyImage, commandType));
         userInput.clear();
     }
 }
