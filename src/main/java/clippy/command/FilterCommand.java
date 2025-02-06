@@ -26,9 +26,9 @@ public class FilterCommand implements Command {
      * @param tasks The task list to filter.
      * @throws ClippyException If the date format is invalid.
      */
-    public void execute(TaskList tasks) throws ClippyException {
+    public String execute(TaskList tasks) throws ClippyException {
         LocalDate target = parseDate(dateStr);
-        System.out.print(UI.filteredTaskString(tasks.displayFilteredList(target), target));
+        return UI.filteredTaskString(tasks.displayFilteredList(target), target);
     }
 
     private LocalDate parseDate(String input) throws ClippyException {

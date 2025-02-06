@@ -27,9 +27,9 @@ public class MarkCommand implements Command {
      * @param tasks The task list containing the task to be marked as done.
      * @throws ClippyException If the index is invalid (e.g., out of bounds or not a number).
      */
-    public void execute(TaskList tasks) throws ClippyException {
+    public String execute(TaskList tasks) throws ClippyException {
         String description = tasks.markTask(indexStr);
-        System.out.print(UI.markTaskString(description));
+        return UI.markTaskString(description);
     }
 
     /**

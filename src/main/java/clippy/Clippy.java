@@ -15,7 +15,25 @@ import clippy.ui.UI;
  * until an exit command is given.
  */
 public class Clippy {
-    public static void main(String[] args) {
+    private final Storage storage;
+    private TaskList tasks;
+
+    public Clippy() {
+        this.storage = new Storage();
+        this.tasks = storage.load();
+    }
+
+    public String getResponse(String input) {
+        Command command;
+        try {
+            command = Parser.parse(input);
+            return command.execute(tasks);
+        } catch (ClippyException e) {
+            return UI.encloseText((e.getMessage()));
+        }
+    }
+
+    /*public static void main(String[] args) {
         System.out.print(UI.getGreeting());
         Scanner reader = new Scanner(System.in);
 
@@ -41,5 +59,5 @@ public class Clippy {
             }
         }
         reader.close();
-    }
+    }*/
 }

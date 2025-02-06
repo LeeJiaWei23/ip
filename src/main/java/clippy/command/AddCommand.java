@@ -30,9 +30,9 @@ public class AddCommand implements Command {
      * @param tasks The task list to which the task should be added.
      * @throws ClippyException If the task description is invalid or improperly formatted.
      */
-    public void execute(TaskList tasks) throws ClippyException {
+    public String execute(TaskList tasks) throws ClippyException {
         String description = tasks.addItem(command, item);
-        System.out.print(UI.addTaskString(description, tasks.getTaskNum()));
+        return UI.addTaskString(description, tasks.getTaskNum());
     }
 
     /**

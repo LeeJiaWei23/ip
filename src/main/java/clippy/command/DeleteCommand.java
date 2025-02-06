@@ -27,9 +27,9 @@ public class DeleteCommand implements Command {
      * @param tasks The task list from which the task will be deleted.
      * @throws ClippyException If the index is invalid (e.g., out of bounds or not a number).
      */
-    public void execute(TaskList tasks) throws ClippyException {
+    public String execute(TaskList tasks) throws ClippyException {
         String description = tasks.deleteTask(indexStr);
-        System.out.print(UI.deleteTaskString(description, tasks.getTaskNum()));
+        return UI.deleteTaskString(description, tasks.getTaskNum());
     }
 
     /**
