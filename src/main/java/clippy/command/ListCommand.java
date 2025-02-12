@@ -16,6 +16,7 @@ public class ListCommand implements Command {
      * @param tasks The task list containing the tasks to be displayed.
      */
     public String execute(TaskList tasks) {
+        assert tasks != null : "TaskList should not be null when executing list";
         return UI.displayListString(tasks.getTasks());
     }
 
