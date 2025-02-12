@@ -22,6 +22,7 @@ public class Clippy {
     public Clippy() {
         this.storage = new Storage();
         this.tasks = storage.load();
+        assert this.tasks != null : "Task list should not be null after loading from storage";
     }
 
     public String getResponse(String input) {
