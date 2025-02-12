@@ -2,6 +2,7 @@ package clippy.command;
 
 import clippy.task.TaskList;
 import clippy.ui.UI;
+import javafx.application.Platform;
 
 /**
  * Represents a command to terminate the program.
@@ -15,7 +16,11 @@ public class ByeCommand implements Command {
      * @param tasks The task list, which remains unchanged.
      */
     public String execute(TaskList tasks) {
-        return UI.getGoodbye();
+        String goodbyeMessage = UI.getGoodbye();
+
+        Platform.exit();
+        System.exit(0);
+        return goodbyeMessage;
     }
 
     /**
