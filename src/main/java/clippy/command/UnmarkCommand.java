@@ -28,7 +28,7 @@ public class UnmarkCommand implements Command {
      * @throws ClippyException If the index is invalid (e.g., out of bounds or not a number).
      */
     public String execute(TaskList tasks) throws ClippyException {
-        String description = tasks.unmarkTask(indexStr);
+        String description = tasks.updateTaskStatus(indexStr, false);
         return UI.unmarkTaskString(description);
     }
 

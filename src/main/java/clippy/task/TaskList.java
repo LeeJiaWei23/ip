@@ -4,8 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import clippy.ClippyException;
+import clippy.command.Command;
 import clippy.command.CommandType;
 import clippy.storage.Storage;
+
+import javax.sound.sampled.Clip;
 
 /**
  * Manages the list of tasks, including adding, deleting, marking, unmarking,
@@ -36,49 +39,57 @@ public class TaskList {
      * @throws ClippyException If the task description is empty or incorrectly formatted.
      */
     public String addItem(CommandType command, String item) throws ClippyException {
-        switch (command) {
-            case TODO -> {
-                String description = item.substring(4).trim();
-                if (description.isEmpty()) {
-                    throw ClippyException.emptyDescription("ToDo");
-                }
-                tasks.add(new ToDo(description));
-            }
-            case DEADLINE -> {
-                String text = item.substring(8);
-                String[] parts = text.split("/by");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw ClippyException.emptyDescription("Deadline");
-                }
-
-                if (parts.length < 2) {
-                    throw ClippyException.emptyTime();
-                }
-                String date = parts[1].trim();
-                tasks.add(new Deadline(description, date));
-            }
-            case EVENT -> {
-                String text = item.substring(5);
-                String[] parts = text.split(" /from | /to ");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw ClippyException.emptyDescription("Event");
-                }
-
-                if (parts.length < 2) {
-                    throw ClippyException.emptyTime();
-                }
-                String start = parts[1].trim();
-                String end = parts[2].trim();
-                tasks.add(new Event(description, start, end));
-            }
-            default -> throw ClippyException.unknownCommand();
-        }
+        Task newTask = createTask(command, item);
+        tasks.add(newTask);
         storage.update(tasks);
         return tasks.get(tasks.size() - 1).toString();
     }
 
+    private Task createTask(CommandType command, String item) throws ClippyException {
+        return switch (command) {
+            case TODO -> createToDoTask(item);
+            case DEADLINE -> createDeadlineTask(item);
+            case EVENT -> createEventTask(item);
+            default -> throw ClippyException.unknownCommand();
+        };
+    }
+
+    private ToDo createToDoTask(String item) throws ClippyException {
+        String description = item.substring(4).trim();
+        if (description.isEmpty()) {
+            throw ClippyException.emptyDescription("ToDo");
+        }
+        return new ToDo(description);
+    }
+
+    private Deadline createDeadlineTask(String item) throws ClippyException {
+        String[] parts = item.substring(8).split("/by");
+        String description = parts[0].trim();
+        if (description.isEmpty()) {
+            throw ClippyException.emptyDescription("Deadline");
+        }
+
+        if (parts.length < 2) {
+            throw ClippyException.emptyTime();
+        }
+        String date = parts[1].trim();
+        return new Deadline(description, date);
+    }
+
+    private Event createEventTask(String item) throws ClippyException {
+        String[] parts = item.substring(5).split(" /from | /to ");
+        String description = parts[0].trim();
+        if (description.isEmpty()) {
+            throw ClippyException.emptyDescription("Event");
+        }
+
+        if (parts.length < 2) {
+            throw ClippyException.emptyTime();
+        }
+        String start = parts[1].trim();
+        String end = parts[2].trim();
+        return new Event(description, start, end);
+    }
 
     private int validateIndex(String indexStr, int size) throws ClippyException {
         int index;
@@ -112,31 +123,25 @@ public class TaskList {
     }
 
     /**
-     * Marks a task as done at the specified index.
+     * Updates the completion status of a task at the specified index.
+     * If `isDone` is true, the task is marked as done; otherwise, it is marked as not done.
+     * The task list is updated in storage after the modification.
      *
-     * @param indexStr The index of the task to be marked as done, provided as a string.
-     * @return A string representation of the marked task.
+     * @param indexStr The index of the task to be updated, provided as a string.
+     * @param isDone A boolean indicating whether to mark the task as done (true) or not done (false).
+     * @return A string representation of the updated task.
      * @throws ClippyException If the index is invalid (out of range or not a number).
      */
-    public String markTask(String indexStr) throws ClippyException {
+    public String updateTaskStatus(String indexStr, boolean isDone) throws ClippyException {
         int index = validateIndex(indexStr, tasks.size());
-        tasks.get(index - 1).markAsDone();
+        Task task = tasks.get(index - 1);
+        if (isDone) {
+            task.markAsDone();
+        } else {
+            task.markAsUndone();
+        }
         storage.update(tasks);
-        return tasks.get(index - 1).toString();
-    }
-
-    /**
-     * Unmarks a task as not done at the specified index.
-     *
-     * @param indexStr The index of the task to be unmarked, provided as a string.
-     * @return A string representation of the unmarked task.
-     * @throws ClippyException If the index is invalid (out of range or not a number).
-     */
-    public String unmarkTask(String indexStr) throws ClippyException {
-        int index = validateIndex(indexStr, tasks.size());
-        tasks.get(index - 1).markAsUndone();
-        storage.update(tasks);
-        return tasks.get(index - 1).toString();
+        return task.toString();
     }
 
     public int getTaskNum() {
