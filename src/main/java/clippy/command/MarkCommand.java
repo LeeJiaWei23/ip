@@ -28,7 +28,7 @@ public class MarkCommand implements Command {
      * @throws ClippyException If the index is invalid (e.g., out of bounds or not a number).
      */
     public String execute(TaskList tasks) throws ClippyException {
-        String description = tasks.markTask(indexStr);
+        String description = tasks.updateTaskStatus(indexStr, true);
         return UI.markTaskString(description);
     }
 
