@@ -1,6 +1,7 @@
 package clippy.gui;
 
 import clippy.Clippy;
+import clippy.ui.UI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -25,6 +26,11 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        String greeting = UI.getGreeting();
+        dialogContainer.getChildren().add(
+                DialogBox.getClippyDialog(greeting, clippyImage, "Greeting")
+        );
     }
 
     public void setClippy(Clippy c) {

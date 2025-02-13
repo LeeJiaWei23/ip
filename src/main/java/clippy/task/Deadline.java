@@ -26,6 +26,11 @@ public class Deadline extends Task {
         this.by = parseDate(by);
     }
 
+    public Deadline(String description, LocalDateTime by) {
+        super(description);
+        this.by = by;
+    }
+
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by.format(OUTPUT_FORMAT) + ")";
     }
@@ -41,5 +46,13 @@ public class Deadline extends Task {
 
     public LocalDateTime getByDate() {
         return by;
+    }
+
+    public Task copy() {
+        Deadline copy = new Deadline(this.description, this.by);
+        if (this.isDone) {
+            copy.markAsDone();
+        }
+        return copy;
     }
 }

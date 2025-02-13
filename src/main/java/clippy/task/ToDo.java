@@ -27,4 +27,12 @@ public class ToDo extends Task {
     public String toFileFormat() {
         return "T | " + (isDone ? "1" : "0") + " | " + super.description;
     }
+
+    public Task copy() {
+        ToDo copy = new ToDo(this.description);
+        if (this.isDone) {
+            copy.markAsDone();
+        }
+        return copy;
+    }
 }

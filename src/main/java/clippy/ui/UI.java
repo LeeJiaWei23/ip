@@ -171,4 +171,10 @@ public class UI {
         }
         return encloseText(result.toString());
     }
+
+    public static String undoTaskString(String description) {
+        String template = "The previous command with task has been undo:\n"
+                + "       %s\n";
+        return encloseText(String.format(template, description));
+    }
 }

@@ -29,6 +29,12 @@ public class Event extends Task {
         this.end = parseDate(end);
     }
 
+    public Event(String description, LocalDateTime start, LocalDateTime end) {
+        super(description);
+        this.start = start;
+        this.end = end;
+    }
+
     public String toString() {
         return "[E]" + super.toString() + " (from: " + start.format(OUTPUT_FORMAT) + " to: "
                 + end.format(OUTPUT_FORMAT) + ")";
@@ -50,5 +56,13 @@ public class Event extends Task {
 
     public LocalDateTime getEnd() {
         return end;
+    }
+
+    public Task copy() {
+        Event copy = new Event(this.description, this.start, this.end);
+        if (this.isDone) {
+            copy.markAsDone();
+        }
+        return copy;
     }
 }

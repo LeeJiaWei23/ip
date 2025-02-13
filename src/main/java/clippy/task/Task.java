@@ -70,4 +70,6 @@ public abstract class Task {
             throw ClippyException.invalidDateTime(input);
         }
     }
+
+    public abstract Task copy();
 }

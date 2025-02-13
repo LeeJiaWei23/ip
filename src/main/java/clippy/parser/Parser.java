@@ -1,31 +1,27 @@
 package clippy.parser;
 
+import clippy.Clippy;
 import clippy.ClippyException;
-import clippy.command.AddCommand;
-import clippy.command.ByeCommand;
-import clippy.command.Command;
-import clippy.command.CommandType;
-import clippy.command.DeleteCommand;
-import clippy.command.FilterCommand;
-import clippy.command.FindCommand;
-import clippy.command.ListCommand;
-import clippy.command.MarkCommand;
-import clippy.command.UnmarkCommand;
+import clippy.command.*;
 
 /**
  * Handles the parsing of user input and converts it to its corresponding command objects.
  * The parser identifies the command type and provides arguments before creating the command.
  */
 public class Parser {
+    private final Clippy clippy;
 
-    /**
-     * Parses the user input and returns the corresponding command.
+    public Parser(Clippy clippy) {
+        this.clippy = clippy;
+    }
+
+     /* Parses the user input and returns the corresponding command.
      *
      * @param input The raw input string entered by the user.
      * @return A Command object representing the parsed user input.
      * @throws ClippyException If the input does not match any valid command format.
      */
-    public static Command parse(String input) throws ClippyException {
+    public Command parse(String input) throws ClippyException {
         String[] words = input.split(" ");
         String arguments = (words.length < 2 ? "" : words[1]);
         CommandType commandType = getCommandType(words[0]);
@@ -39,6 +35,7 @@ public class Parser {
         case BYE -> new ByeCommand();
         case FILTER -> new FilterCommand(arguments);
         case FIND -> new FindCommand(arguments);
+        case UNDO -> new UndoCommand(clippy);
         };
     }
 

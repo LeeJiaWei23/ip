@@ -4,11 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import clippy.ClippyException;
-import clippy.command.Command;
 import clippy.command.CommandType;
 import clippy.storage.Storage;
-
-import javax.sound.sampled.Clip;
 
 /**
  * Manages the list of tasks, including adding, deleting, marking, unmarking,
