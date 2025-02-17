@@ -61,8 +61,7 @@ public class Clippy {
            copied.add(task.copy());
        }
        TaskList copy = new TaskList(copied, storage);
-        history.push(copy);
-        System.out.println(history);
+       history.push(copy);
     }
 
     public String undo() {
