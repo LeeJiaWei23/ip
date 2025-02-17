@@ -28,6 +28,7 @@ public class ToDo extends Task {
         return "T | " + (isDone ? "1" : "0") + " | " + super.description;
     }
 
+    @Override
     public Task copy() {
         ToDo copy = new ToDo(this.description);
         if (this.isDone) {

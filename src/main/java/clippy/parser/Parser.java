@@ -15,8 +15,8 @@ public class Parser {
         this.clippy = clippy;
     }
 
-     /* Parses the user input and returns the corresponding command.
-     *
+     /**
+     * Parses the user input and returns the corresponding command.
      * @param input The raw input string entered by the user.
      * @return A Command object representing the parsed user input.
      * @throws ClippyException If the input does not match any valid command format.

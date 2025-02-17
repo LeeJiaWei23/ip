@@ -1,6 +1,5 @@
 package clippy.command;
 
-import clippy.Clippy;
 import clippy.ClippyException;
 import clippy.task.TaskList;
 import clippy.ui.UI;

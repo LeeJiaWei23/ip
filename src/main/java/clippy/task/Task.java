@@ -71,5 +71,12 @@ public abstract class Task {
         }
     }
 
+    /**
+     * Creates and returns a copy of the current task.
+     * Each subclass (ToDo, Deadline, Event) must implement this method to return
+     * a duplicate of the specific task type.
+     *
+     * @return A new Task object that is a duplicate of the current task.
+     */
     public abstract Task copy();
 }

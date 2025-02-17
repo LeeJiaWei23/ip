@@ -58,6 +58,7 @@ public class Event extends Task {
         return end;
     }
 
+    @Override
     public Task copy() {
         Event copy = new Event(this.description, this.start, this.end);
         if (this.isDone) {
