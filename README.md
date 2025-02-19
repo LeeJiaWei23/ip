@@ -1,4 +1,4 @@
-# User Guide
+# Clippy User Guide
 
 This is a user guide for my CS2103T individual project. It is a **chatbot that helps you to remember all your tasks**.
 
