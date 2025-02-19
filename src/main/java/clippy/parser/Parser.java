@@ -2,7 +2,17 @@ package clippy.parser;
 
 import clippy.Clippy;
 import clippy.ClippyException;
-import clippy.command.*;
+import clippy.command.AddCommand;
+import clippy.command.ByeCommand;
+import clippy.command.Command;
+import clippy.command.CommandType;
+import clippy.command.DeleteCommand;
+import clippy.command.FilterCommand;
+import clippy.command.FindCommand;
+import clippy.command.ListCommand;
+import clippy.command.MarkCommand;
+import clippy.command.UndoCommand;
+import clippy.command.UnmarkCommand;
 
 /**
  * Handles the parsing of user input and converts it to its corresponding command objects.
@@ -15,7 +25,7 @@ public class Parser {
         this.clippy = clippy;
     }
 
-     /**
+    /**
      * Parses the user input and returns the corresponding command.
      * @param input The raw input string entered by the user.
      * @return A Command object representing the parsed user input.

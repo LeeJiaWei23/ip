@@ -19,7 +19,7 @@ This is a user guide for my CS2103T individual project. It is a **chatbot that h
 1. Ensure you have Java `17` or above installed on your computer.
 2. Download the latest `jar` file from here.
 3. Copy the file to the folder you want to use as the Home directory.
-4. Open a command terminal, `cd` to the directory and enter `java -jar Clippy.jar` to run the application.
+4. Open a command terminal, `cd` to the directory and enter `java -jar clippy.jar` to run the application.
 5. Refer to the Features below to learn more about the commands.
 
 ## Adding `todo` tasks

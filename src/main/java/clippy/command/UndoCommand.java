@@ -28,7 +28,6 @@ public class UndoCommand implements Command {
      *
      * @return false, since undo does not end the program.
      */
-    @Override
     public boolean isExit() {
         return false;
     }

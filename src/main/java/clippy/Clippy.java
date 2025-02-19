@@ -66,14 +66,14 @@ public class Clippy {
      * allowing the user to undo changes later.
      */
     public void saveState() {
-       ArrayList<Task> copied = new ArrayList<>();
-       //  need to make a deep copy since modifying a task in the original TaskList, those changes are reflected
+        ArrayList<Task> copied = new ArrayList<>();
+        //  need to make a deep copy since modifying a task in the original TaskList, those changes are reflected
         // in all the "copies" in your history
-       for (Task task : tasks.getTasks()) {
-           copied.add(task.copy());
-       }
-       TaskList copy = new TaskList(copied, storage);
-       history.push(copy);
+        for (Task task : tasks.getTasks()) {
+            copied.add(task.copy());
+        }
+        TaskList copy = new TaskList(copied, storage);
+        history.push(copy);
     }
 
     /**

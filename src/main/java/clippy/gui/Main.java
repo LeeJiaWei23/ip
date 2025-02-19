@@ -2,14 +2,14 @@ package clippy.gui;
 
 import clippy.Clippy;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
 
@@ -27,7 +27,7 @@ public class Main extends Application {
             stage.setTitle("Clippy Bot");
             Image image = new Image(Main.class.getResource("/images/icon.png").toExternalForm());
             stage.getIcons().add(image);
-            fxmlLoader.<MainWindow>getController().setClippy(clippy);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setClippy(clippy);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

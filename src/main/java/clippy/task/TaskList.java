@@ -18,7 +18,7 @@ public class TaskList {
     /**
      * Constructs a TaskList with the given tasks and storage.
      *
-     * @param tasks The list of tasks to manage.
+     * @param tasks   The list of tasks to manage.
      * @param storage The storage handler for saving task changes.
      */
     public TaskList(ArrayList<Task> tasks, Storage storage) {
@@ -31,7 +31,7 @@ public class TaskList {
      * The task list is updated in storage after the addition.
      *
      * @param command The type of task to add (ToDo, Deadline, Event).
-     * @param item The full task description, including any necessary dates or times.
+     * @param item    The full task description, including any necessary dates or times.
      * @return A string representation of the added task.
      * @throws ClippyException If the task description is empty or incorrectly formatted.
      */
@@ -44,10 +44,10 @@ public class TaskList {
 
     private Task createTask(CommandType command, String item) throws ClippyException {
         return switch (command) {
-            case TODO -> createToDoTask(item);
-            case DEADLINE -> createDeadlineTask(item);
-            case EVENT -> createEventTask(item);
-            default -> throw ClippyException.unknownCommand();
+        case TODO -> createToDoTask(item);
+        case DEADLINE -> createDeadlineTask(item);
+        case EVENT -> createEventTask(item);
+        default -> throw ClippyException.unknownCommand();
         };
     }
 
@@ -125,7 +125,7 @@ public class TaskList {
      * The task list is updated in storage after the modification.
      *
      * @param indexStr The index of the task to be updated, provided as a string.
-     * @param isDone A boolean indicating whether to mark the task as done (true) or not done (false).
+     * @param isDone   A boolean indicating whether to mark the task as done (true) or not done (false).
      * @return A string representation of the updated task.
      * @throws ClippyException If the index is invalid (out of range or not a number).
      */
@@ -160,17 +160,28 @@ public class TaskList {
         ArrayList<Task> matchedTasks = new ArrayList<>();
 
         for (Task task : tasks) {
-            if (task instanceof Deadline deadlineTask) {
-                if (deadlineTask.getByDate().toLocalDate().equals(target)) {
-                    matchedTasks.add(deadlineTask);
-                }
-            } else if (task instanceof Event eventTask) {
-                if (eventTask.getStart().toLocalDate().equals(target)
-                        || eventTask.getEnd().toLocalDate().equals(target)) {
-                    matchedTasks.add(eventTask);
-                }
+            if (matchesTargetDate(task, target)) {
+                matchedTasks.add(task);
             }
         }
+
         return matchedTasks;
+    }
+
+    /**
+     * Checks if a task matches the specified date.
+     *
+     * @param task   The task to check.
+     * @param target The date to match.
+     * @return true if the task's date matches the target date, false otherwise.
+     */
+    private boolean matchesTargetDate(Task task, LocalDate target) {
+        if (task instanceof Deadline deadline) {
+            return deadline.getByDate().toLocalDate().equals(target);
+        } else if (task instanceof Event event) {
+            return event.getStart().toLocalDate().equals(target)
+                    || event.getEnd().toLocalDate().equals(target);
+        }
+        return false;
     }
 }

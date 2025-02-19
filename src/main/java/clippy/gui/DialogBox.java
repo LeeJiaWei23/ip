@@ -1,19 +1,20 @@
 package clippy.gui;
 
+import java.io.IOException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
 
-import java.io.IOException;
 
-public class DialogBox extends HBox{
+public class DialogBox extends HBox {
     @FXML
     private Label dialog;
     @FXML
@@ -50,16 +51,16 @@ public class DialogBox extends HBox{
             return;
         }
         switch(commandType) {
-            case "AddCommand":
-                dialog.getStyleClass().add("add-label");
-                break;
-            case "MarkCommand":
-                dialog.getStyleClass().add("marked-label");
-                break;
-            case "DeleteCommand":
-                dialog.getStyleClass().add("delete-label");
-                break;
-            default:
+        case "AddCommand":
+            dialog.getStyleClass().add("add-label");
+            break;
+        case "MarkCommand":
+            dialog.getStyleClass().add("marked-label");
+            break;
+        case "DeleteCommand":
+            dialog.getStyleClass().add("delete-label");
+            break;
+        default:
         }
     }
 
