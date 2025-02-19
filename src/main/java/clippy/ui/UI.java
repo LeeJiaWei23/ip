@@ -20,7 +20,7 @@ public class UI {
      * @return The formatted string with borders.
      */
     public static String encloseText(String input) {
-        return HORIZONTAL_LINE + "     " + input.trim() + "\n" + HORIZONTAL_LINE;
+        return input.trim() + "\n";
     }
 
     /**
@@ -30,7 +30,7 @@ public class UI {
      */
     public static String getGreeting() {
         return encloseText("Hey! I'm Clippy. Your personal assistant chatbot\n"
-                + "     " + "How can I help?");
+                + "How can I help?");
     }
 
     /**
@@ -51,8 +51,7 @@ public class UI {
     public static String displayListString(ArrayList<Task> tasks) {
         StringBuilder result = new StringBuilder("Current Tasks in Your List:\n");
         for (int i = 0; i < tasks.size(); i++) {
-            result.append("     ")
-                    .append(i + 1).append(".")
+            result.append(i + 1).append(".")
                     .append(tasks.get(i).toString()).append("\n");
         }
         return encloseText(result.toString());
@@ -66,7 +65,7 @@ public class UI {
      */
     public static String markTaskString(String input) {
         return encloseText("Well Done! This task is mark as done:\n"
-                + "       " + input);
+                + input);
     }
 
     /**
@@ -77,7 +76,7 @@ public class UI {
      */
     public static String unmarkTaskString(String input) {
         return encloseText("OK. This task is mark as not done:\n"
-                + "       " + input);
+                 + input);
     }
 
     /**
@@ -89,8 +88,8 @@ public class UI {
      */
     public static String addTaskString(String input, int taskNum) {
         String template = "Got it. This task will be added to the list:\n"
-                + "       %s\n"
-                + "     Now you have %d %s in the list.";
+                + "%s\n"
+                + "Now you have %d %s in the list";
         String taskOrTasks = (taskNum == 1 ? "task" : "tasks");
         return encloseText(String.format(template, input, taskNum, taskOrTasks));
     }
@@ -104,8 +103,8 @@ public class UI {
      */
     public static String deleteTaskString(String input, int taskNum) {
         String template = "Got it. This task will be removed from the list:\n"
-                + "       %s\n"
-                + "     Now you have %d %s in the list.";
+                + "%s\n"
+                + "Now you have %d %s in the list";
         String taskOrTasks = (taskNum == 1 ? "task" : "tasks");
         return encloseText(String.format(template, input, taskNum, taskOrTasks));
     }
@@ -144,8 +143,7 @@ public class UI {
         StringBuilder result = new StringBuilder("Tasks on " + target.format(outputFormat) + "\n");
 
         for (int i = 0; i < tasks.size(); i++) {
-            result.append("     ")
-                    .append(i + 1).append(".")
+            result.append(i + 1).append(".")
                     .append(tasks.get(i).toString()).append("\n");
         }
         return encloseText(result.toString());
@@ -165,8 +163,7 @@ public class UI {
         StringBuilder result = new StringBuilder("Tasks that match your search in your list\n");
 
         for (int i = 0; i < tasks.size(); i++) {
-            result.append("     ")
-                    .append(i + 1).append(".")
+            result.append(i + 1).append(".")
                     .append(tasks.get(i).toString()).append("\n");
         }
         return encloseText(result.toString());
@@ -174,7 +171,7 @@ public class UI {
 
     public static String undoTaskString(String description) {
         String template = "The previous command with task has been undo:\n"
-                + "       %s\n";
+                + "%s\n";
         return encloseText(String.format(template, description));
     }
 }
