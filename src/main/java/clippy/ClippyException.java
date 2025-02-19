@@ -46,4 +46,8 @@ public class ClippyException extends Exception {
         return new ClippyException("Invalid date format: " + input
                 + ".\n     " + "Expected: DD/MM/YYYY E.g. 01/01/2025 2000");
     }
+
+    public static ClippyException unexpectedArguments(String command) {
+        return new ClippyException("Oh no. The '" + command + "' command does not take any arguments");
+    }
 }

@@ -11,7 +11,7 @@ import clippy.task.Task;
  * This class provides methods to format and display messages in a consistent format.
  */
 public class UI {
-    private static final String HORIZONTAL_LINE = "    _______________________________________________________\n";
+    private static final String HORIZONTAL_LINE = "    _____________________________________________________________\n";
 
     /**
      * Encloses a given text message within a horizontal border.

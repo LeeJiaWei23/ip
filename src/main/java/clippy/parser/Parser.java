@@ -27,15 +27,24 @@ public class Parser {
         CommandType commandType = getCommandType(words[0]);
 
         return switch (commandType) {
-        case LIST -> new ListCommand();
+        case LIST -> {
+            validateNoArguments("list", arguments);
+            yield new ListCommand();
+        }
         case MARK -> new MarkCommand(arguments);
         case UNMARK -> new UnmarkCommand(arguments);
         case DELETE -> new DeleteCommand(arguments);
         case TODO, DEADLINE, EVENT -> new AddCommand(commandType, input);
-        case BYE -> new ByeCommand();
+        case BYE -> {
+            validateNoArguments("bye", arguments);
+            yield new ByeCommand();
+        }
         case FILTER -> new FilterCommand(arguments);
         case FIND -> new FindCommand(arguments);
-        case UNDO -> new UndoCommand(clippy);
+        case UNDO -> {
+            validateNoArguments("undo", arguments);
+            yield new UndoCommand(clippy);
+        }
         };
     }
 
@@ -51,6 +60,12 @@ public class Parser {
             return CommandType.valueOf(command.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw ClippyException.unknownCommand();
+        }
+    }
+
+    private void validateNoArguments(String command, String arguments) throws ClippyException {
+        if (!arguments.isEmpty()) {
+            throw ClippyException.unexpectedArguments(command);
         }
     }
 }

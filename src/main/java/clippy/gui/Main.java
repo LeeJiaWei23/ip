@@ -23,7 +23,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             stage.setMinHeight(220);
-            stage.setMinWidth(550);
+            stage.setMinWidth(560);
             stage.setTitle("Clippy Bot");
             Image image = new Image(Main.class.getResource("/images/icon.png").toExternalForm());
             stage.getIcons().add(image);
