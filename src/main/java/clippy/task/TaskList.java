@@ -75,11 +75,11 @@ public class TaskList {
 
     private Event createEventTask(String item) throws ClippyException {
         String[] parts = item.substring(5).split(" /from | /to ");
+
         String description = parts[0].trim();
         if (description.isEmpty()) {
             throw ClippyException.emptyDescription("Event");
         }
-
         if (parts.length < 2) {
             throw ClippyException.emptyTime();
         }

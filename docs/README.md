@@ -15,6 +15,7 @@ This is a user guide for my CS2103T individual project. It is a **chatbot that h
 - [Reverting the tasklist](#reverting-the-tasklist)
 - [Closing the program](#closing-the-program)
 
+![Project Screenshot](Ui.png)
 ## Quick start
 1. Ensure you have Java `17` or above installed on your computer.
 2. Download the latest `jar` file from here.
