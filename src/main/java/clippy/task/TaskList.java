@@ -80,7 +80,7 @@ public class TaskList {
         if (description.isEmpty()) {
             throw ClippyException.emptyDescription("Event");
         }
-        if (parts.length < 2) {
+        if (parts.length <= 2) {
             throw ClippyException.emptyTime();
         }
         String start = parts[1].trim();
@@ -133,8 +133,14 @@ public class TaskList {
         int index = validateIndex(indexStr, tasks.size());
         Task task = tasks.get(index - 1);
         if (isDone) {
+            if (task.isDone) {
+                throw ClippyException.taskMarkedAlr();
+            }
             task.markAsDone();
         } else {
+            if (!task.isDone) {
+                throw ClippyException.taskUnmarkedAlr();
+            }
             task.markAsUndone();
         }
         storage.update(tasks);

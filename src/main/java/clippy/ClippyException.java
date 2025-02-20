@@ -50,4 +50,12 @@ public class ClippyException extends Exception {
     public static ClippyException unexpectedArguments(String command) {
         return new ClippyException("Oh no. The '" + command + "' command does not take any arguments");
     }
+
+    public static ClippyException taskMarkedAlr() {
+        return new ClippyException("Task has already been marked done");
+    }
+
+    public static ClippyException taskUnmarkedAlr() {
+        return new ClippyException("Task has already been marked undone");
+    }
 }
