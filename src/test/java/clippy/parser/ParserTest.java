@@ -58,7 +58,7 @@ public class ParserTest {
 
     @Test
     void parse_todoCommand_validDescription_returnsAddCommand() throws ClippyException {
-        Command command = parser.parse("todo Read book");
+        Command command = parser.parse("todo read book");
         assertInstanceOf(AddCommand.class, command);
     }
 

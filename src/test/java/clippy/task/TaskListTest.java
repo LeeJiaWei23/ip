@@ -78,8 +78,8 @@ public class TaskListTest {
     @Test
     void updateTaskStatus_markAsUndone_success() throws ClippyException {
         tasks.addItem(CommandType.TODO, "todo Exercise");
-        tasks.updateTaskStatus("1", true); // First mark as done
+        tasks.updateTaskStatus("1", true);
         String updatedTask = tasks.updateTaskStatus("1", false);
-        assertTrue(updatedTask.contains("[ ]")); // Marked as undone
+        assertTrue(updatedTask.contains("[ ]"));
     }
 }

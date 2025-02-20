@@ -13,7 +13,7 @@ import clippy.ui.UI;
 
 /**
  * Runs the Clippy application.
- * Clippy is a task management assistant that allows users to manage tasks via a command-line interface.
+ * Clippy is a task management that allows users to manage tasks via a command-line interface.
  * The application starts by loading stored tasks and then processes user commands in a loop
  * until an exit command is given.
  */
@@ -67,7 +67,7 @@ public class Clippy {
      */
     public void saveState() {
         ArrayList<Task> copied = new ArrayList<>();
-        //  need to make a deep copy since modifying a task in the original TaskList, those changes are reflected
+        // need to make a deep copy since modifying a task in the original TaskList, those changes are reflected
         // in all the "copies" in your history
         for (Task task : tasks.getTasks()) {
             copied.add(task.copy());

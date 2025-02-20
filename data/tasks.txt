@@ -1,5 +1,0 @@
-T | 1 | buy books
-T | 1 | sell books
-T | 0 | buy books
-D | 0 | lol | 11/11/2011 2000
-E | 1 | lol | 11/11/2001 1000 - 11/11/2001 1100

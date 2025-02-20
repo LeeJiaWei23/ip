@@ -26,6 +26,9 @@ public class ClippyException extends Exception {
     }
 
     public static ClippyException invalidInteger(String indexStr) {
+        if (indexStr.isEmpty()) {
+            indexStr = "This";
+        }
         return new ClippyException("Oh no. " + indexStr + " is not a valid integer :(");
     }
 
