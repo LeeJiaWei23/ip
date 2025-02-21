@@ -22,7 +22,7 @@ public class ClippyException extends Exception {
     }
 
     public static ClippyException emptyTime() {
-        return new ClippyException("Oh no. Please add a date to the task. :(");
+        return new ClippyException("Oh no. Please add a date to the task :(");
     }
 
     public static ClippyException invalidInteger(String indexStr) {
@@ -60,5 +60,9 @@ public class ClippyException extends Exception {
 
     public static ClippyException taskUnmarkedAlr() {
         return new ClippyException("Task has already been marked undone");
+    }
+
+    public static ClippyException invalidEventFormat() {
+        return new ClippyException("Event format is invalid. Refer to user guide");
     }
 }
