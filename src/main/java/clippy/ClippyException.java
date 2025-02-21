@@ -22,7 +22,7 @@ public class ClippyException extends Exception {
     }
 
     public static ClippyException emptyTime() {
-        return new ClippyException("Oh no. Please add a time / date to the task :(");
+        return new ClippyException("Oh no. Please add a date to the task. :(");
     }
 
     public static ClippyException invalidInteger(String indexStr) {
@@ -47,7 +47,7 @@ public class ClippyException extends Exception {
 
     public static ClippyException invalidDate(String input) {
         return new ClippyException("Invalid date format: " + input
-                + ".\n     " + "Expected: DD/MM/YYYY E.g. 01/01/2025 2000");
+                + ".\n     " + "Expected: DD/MM/YYYY E.g. 01/01/2025");
     }
 
     public static ClippyException unexpectedArguments(String command) {

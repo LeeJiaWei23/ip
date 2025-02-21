@@ -59,12 +59,6 @@ public class Storage {
      */
     private void addTaskFromFile(ArrayList<Task> tasks, String input) throws ClippyException {
         String[] data = input.split("\\|");
-
-        if (data.length != 3 || data.length != 4) {
-            System.out.println("Wrong data format. Please delete data folder and try again");
-            return;
-        }
-
         String type = data[0].trim();
         String isDone = data[1].trim();
         String description = data[2].trim();
